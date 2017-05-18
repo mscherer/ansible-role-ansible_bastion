@@ -4,7 +4,7 @@ Host *.{{ ansible_domain }}
 
 {% if enable_onion_support or use_tor_proxy %}
 {% if use_tor_proxy %}
-Host *
+Match exec "~/.ssh/is_private.py %h"
 {% else %}
 Host *.onion
 {% endif %}

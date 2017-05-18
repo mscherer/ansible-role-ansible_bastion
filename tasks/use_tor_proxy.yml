@@ -6,3 +6,14 @@
   with_items:
   - http
   - https
+
+- name: Install required python package
+  package:
+    name: python-ipaddr
+    state: present
+
+- name: Deploy script to filter private ip
+  copy:
+    dest: "~{{ ansible_username }}/.ssh/is_private.py"
+    src: is_private.py
+    mode: 0755
